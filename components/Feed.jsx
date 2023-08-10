@@ -38,13 +38,15 @@ const Feed = () => {
   }, []);
 
   const filterPrompts = (searchtext) => {
-    const regex = new RegExp(searchtext, "i"); // 'i' flag for case-insensitive search
-    return allPosts.filter(
+    const regex = new RegExp(searchtext, "i");
+    filteredPosts =  allPosts.filter(
       (item) =>
         regex.test(item.creator.username) ||
         regex.test(item.tag) ||
         regex.test(item.prompt)
     );
+    console.log("returned Posts", filteredPosts);
+    return filteredPosts;
   };
 
   const handleSearchChange = (e) => {
