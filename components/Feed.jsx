@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 import PromptCard from "./PromptCard";
+import { useSession } from "next-auth/react";
 
 const PromptCardList = ({ data}) => {
   return (
@@ -19,6 +20,8 @@ const PromptCardList = ({ data}) => {
 
 const Feed = () => {
   const [allPosts, setAllPosts] = useState([]);
+  const {data:session} = useSession();
+  const user = session?.user.id;
 
   const fetchPosts = async () => {
     const response = await fetch("/api/prompt");
@@ -30,7 +33,7 @@ const Feed = () => {
   useEffect(() => {
     fetchPosts();
     console.log("UseEffect called")
-  }, []);
+  }, [user]);
 
   return (
     <section className='feed'>
