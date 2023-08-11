@@ -23,15 +23,13 @@ const Feed = () => {
   const {data:session} = useSession();
   const user = session?.user.id;
 
-  const fetchPosts = async () => {
-    const response = await fetch("/api/prompt");
-    const data = await response.json();
-
-    setAllPosts(data);
-  };
-  console.log("FeedPage", allPosts)
   useEffect(() => {
-    fetchPosts();
+    (async () => {
+      const response = await fetch("/api/prompt");
+      console.log("Response", response)
+      const data = await response.json();
+      setAllPosts(data);
+    })()
     console.log("UseEffect called")
   }, [user]);
 
