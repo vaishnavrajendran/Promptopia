@@ -28,7 +28,8 @@ const Feed = () => {
       const response = await fetch("/api/prompt");
       console.log("Response", response)
       const data = await response.json();
-      setAllPosts(data);
+      console.log("Data", data)
+      setAllPosts(data);  
     })()
     console.log("UseEffect called")
   }, [user]);
