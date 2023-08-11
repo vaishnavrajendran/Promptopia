@@ -26,7 +26,7 @@ const Feed = () => {
 
     setAllPosts(data);
   };
-
+  console.log("FeedPage", allPosts)
   useEffect(() => {
     fetchPosts();
     console.log("UseEffect called")
