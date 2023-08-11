@@ -29,11 +29,12 @@ const Feed = () => {
 
   useEffect(() => {
     fetchPosts();
+    console.log("UseEffect called")
   }, []);
 
   return (
     <section className='feed'>
-        <PromptCardList data={allPosts} />
+      <PromptCardList data={allPosts} />
     </section>
   );
 };
